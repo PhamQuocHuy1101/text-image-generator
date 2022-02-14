@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Online  -->  
+    <!-- <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script> -->
+
+    <!-- Offline -->
+	<script src="./static/html2canvas.min.js"></script>
+
+    <script type="text/javascript" src="./static/font/google_font.js"></script>
+    <script type="text/javascript" src="./static/words/words.js"></script>
+
+</head>
+
+<body>
+	<span id="photo">
+		Screenshot
+	</span>
+    <button onclick="takeshot()">
+        Take Screenshot
+    </button>
+
+	<script type="text/javascript">
+        var metadata;
+        window.onload = async (event) => {
+            metadata = JSON.parse(font_data)
+            console.log(words)
+        }
+
+		async function takeshot() {
+            var photo_el = document.getElementById('photo');
+            for (i = 0; i < metadata.length; i++) {
+                font_info = metadata[i]
+                var font = new FontFace(`${font_info.name}`, `url(${font_info.path})`);
+                await font.load();
+                document.fonts.clear()
+                document.fonts.add(font)
+                photo_el.style.fontFamily = font_info.name
+
+                words.forEach(async (word) => {
+                    photo_el.textContent = word
+                    await html2canvas(photo_el).then(
+                        function (canvas) {
+                            let link = document.createElement('a');
+                            link.download = `${font_info.name}.${word}.png`;
+                            link.href = canvas.toDataURL()
+                            link.click();
+                            console.log(canvas.height, canvas.width)
+                    }) 
+                });
+                break; // test
+            }
+            return
+			
+		}
+	</script>
+</body>
+
+</html>

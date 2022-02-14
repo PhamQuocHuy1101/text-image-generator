@@ -1,0 +1,1 @@
+words = ['test', 'web', 'screenshot']
