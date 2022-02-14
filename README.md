@@ -1,5 +1,5 @@
 # text-image-generator
-This repo help make the image of text with various font with hight resolution (using canvas on web). You can simply modify source code for add background, text, font, color, ... with html code.
+This repo help make the image of text with various font with high resolution (using canvas on web). You can simply modify source code for add background, text, font, color, ... with html code.
 
 ## Run
 - [Download](https://drive.google.com/file/d/1v_pd4Kim8Jjyt0iQypjuN5bI6cfA_ElQ/view?usp=sharing) (of add custom font) and extract in ./static/font
